@@ -6,10 +6,10 @@ import { updateProfileUser } from '../../redux/actions/profileAction'
 
 const EditProfile = ({setOnEdit}) => {
     const initState = {
-        fullname: '', mobile: '', address: '', website: '', story: '', gender: ''
+        fullname: '', mobile: '', address: '', website: '', story: '', gender: '', branch: '', yearofpassing: '', skills: ''
     }
     const [userData, setUserData] = useState(initState)
-    const { fullname, mobile, address, website, story, gender } = userData
+    const { fullname, mobile, address, website, story, gender, branch, yearofpassing, skills } = userData
 
     const [avatar, setAvatar] = useState('')
 
@@ -71,6 +71,28 @@ const EditProfile = ({setOnEdit}) => {
                             {fullname.length}/25
                         </small>
                     </div>
+                </div>
+
+                <div className='row'>
+                <div className='col-lg-6'>
+                <div className='form-group'>
+                    <label htmlFor='branch'>Branch</label>
+                    <input type="text" name="branch" value={branch} className="form-control" disabled/>
+                </div>
+                </div>
+
+                <div className='col-lg-6'>
+                <div className='form-group'>
+                    <label htmlFor='yearofpassing'>Year Of Passing</label>
+                    <input type="text" name="yearofpassing" value={yearofpassing} className="form-control" disabled/>
+                </div>
+                </div>
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="skills">Skills</label>
+                    <textarea name="skills" value={skills} cols="30" rows="2"
+                    className="form-control" onChange={handleInput} />
                 </div>
 
                 <div className="form-group">

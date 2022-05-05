@@ -9,10 +9,10 @@ const Register = () => {
     const history = useHistory()
 
     const initialState = { 
-        fullname: '', username: '', email: '', password: '', cf_password: '', gender: 'male'
+        fullname: '', username: '', email: '', password: '', cf_password: '', gender: 'male', yearofpassing: new Date().getFullYear() - 1, branch: '',
     }
     const [userData, setUserData] = useState(initialState)
-    const { fullname, username, email, password, cf_password } = userData
+    const { fullname, username, email, password, cf_password, yearofpassing, branch } = userData
 
     const [typePass, setTypePass] = useState(false)
     const [typeCfPass, setTypeCfPass] = useState(false)
@@ -35,7 +35,7 @@ const Register = () => {
     return (
         <div className="auth_page">
             <form onSubmit={handleSubmit}>
-                <h3 className="text-uppercase text-center mb-4">V-Network</h3>
+                <h3 className="text-uppercase text-center mb-4">AIKTC Network</h3>
 
                 <div className="form-group">
                     <label htmlFor="fullname">Full Name</label>
@@ -125,6 +125,27 @@ const Register = () => {
                         Other: <input type="radio" id="other" name="gender"
                         value="other" onChange={handleChangeInput} />
                     </label>
+                </div>
+
+                Branch
+                <select className='form-control' name="branch" id="branch" onChange={handleChangeInput} required>
+                    <option value={branch} selected disabled>Select a option</option>
+                    <option value="Computer">Computer</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Electrical">Electrical</option>
+                </select>
+
+                <div className="form-group mt-3">
+                    <label htmlFor="yearofpassing">Year of Passing</label>
+                    <input type="number" className="form-control" id="yearofpassing" name="yearofpassing"
+                    onChange={handleChangeInput} value={yearofpassing}
+                    style={{background: `${alert.yearofpassing ? '#fd2d6a14' : ''}`}} />
+                    
+                    <small className="form-text text-danger">
+                        {alert.yearofpassing ? alert.yearofpassing : ''}
+                    </small>
                 </div>
                 
                 <button type="submit" className="btn btn-dark w-100">

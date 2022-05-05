@@ -1,7 +1,9 @@
 .auth_page{
     width: 100%;
     min-height: 100vh;
-    background: #fdfdfd;
+    background-image: url(../images/aiktc.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;

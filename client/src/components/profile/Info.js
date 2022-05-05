@@ -64,13 +64,17 @@ const Info = ({id, auth, profile, dispatch}) => {
                                 </span>
                             </div>
 
-                            <h6>{user.fullname} <span className="text-danger">{user.mobile}</span></h6>
-                            <p className="m-0">{user.address}</p>
-                            <h6 className="m-0">{user.email}</h6>
-                            <a href={user.website} target="_blank" rel="noreferrer">
+                            <h6 className="m-0">Name: {user.fullname}</h6>
+                            {/* <br/>Mobile: <span className="text-danger">{user.mobile}</span></h6> */}
+                            {/* <p className="m-0">Address: {user.address}</p> */}
+                            <h6 className="m-0">Email: {user.email}</h6>
+                            <h6 className="m-0">Branch: {user.branch}</h6>
+                            <h6 className="m-0">Passing Year: {user.yearofpassing}</h6>
+                            Website: <a href={user.website} target="_blank" rel="noreferrer">
                                 {user.website}
                             </a>
-                            <p>{user.story}</p>
+                            <p>Story: {user.story}</p>
+                            
                         </div>
 
                         {

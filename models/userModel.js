@@ -41,7 +41,25 @@ const userSchema = new mongoose.Schema({
     website: {type: String, default: ''},
     followers: [{type: mongoose.Types.ObjectId, ref: 'user'}],
     following: [{type: mongoose.Types.ObjectId, ref: 'user'}],
-    saved: [{type: mongoose.Types.ObjectId, ref: 'user'}]
+    saved: [{type: mongoose.Types.ObjectId, ref: 'user'}],
+    branch: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    yearofpassing: {
+        type     : Number,
+        required : true,
+        validate : {
+            validator : Number.isInteger,
+            // message   : '{VALUE} is not an integer value'
+        }
+    },
+    skills: {
+        type: String,
+        default: '',
+        maxlength: 100
+    }
 }, {
     timestamps: true
 })

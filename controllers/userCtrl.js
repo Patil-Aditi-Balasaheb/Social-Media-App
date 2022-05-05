@@ -24,11 +24,11 @@ const userCtrl = {
     },
     updateUser: async (req, res) => {
         try {
-            const { avatar, fullname, mobile, address, story, website, gender } = req.body
+            const { avatar, fullname, mobile, address, story, website, gender, skills } = req.body
             if(!fullname) return res.status(400).json({msg: "Please add your full name."})
 
             await Users.findOneAndUpdate({_id: req.user._id}, {
-                avatar, fullname, mobile, address, story, website, gender
+                avatar, fullname, mobile, address, story, website, gender, skills
             })
 
             res.json({msg: "Update Success!"})

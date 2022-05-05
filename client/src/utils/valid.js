@@ -1,4 +1,4 @@
-const valid = ({fullname, username, email, password, cf_password}) => {
+const valid = ({fullname, username, email, password, cf_password, yearofpassing}) => {
     const err = {}
 
     if(!fullname) {
@@ -27,6 +27,12 @@ const valid = ({fullname, username, email, password, cf_password}) => {
 
     if(password !== cf_password) {
         err.cf_password = "Confirm password did not match."
+    }
+
+    if(!yearofpassing) {
+        err.yearofpassing = "Please enter your Year of Passing."
+    }else if(yearofpassing > new Date().getFullYear() + 3){
+        err.yearofpassing = "Not a valid year of passing."
     }
 
     return {

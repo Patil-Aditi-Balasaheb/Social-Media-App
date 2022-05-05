@@ -174,10 +174,10 @@ const RightSide = () => {
         callUser({video: false})
     }
     
-    const handleVideoCall = () => {
-        caller({video: true})
-        callUser({video: true})
-    }
+    // const handleVideoCall = () => {
+    //     caller({video: true})
+    //     callUser({video: true})
+    // }
 
     return (
         <>
