@@ -16,13 +16,15 @@ const valid = ({fullname, username, email, password, cf_password, yearofpassing}
     if(!email) {
         err.email = "Please add your email."
     }else if(!validateEmail(email)){
-        err.email = "Email format is incorrect."
+        err.email = "Email format is incorrect. Only emails with AIKTC domain are allowed!"
     }
 
     if(!password) {
         err.password = "Please add your password."
     }else if(password.length < 6){
         err.password = "Password must be at least 6 characters."
+    }else if(!validatePassword(password)) {
+        err.password = "Weak password. Password must have at least one Uppercase, one Lowercase, one digit and one Special Characters!"
     }
 
     if(password !== cf_password) {
@@ -46,7 +48,25 @@ const valid = ({fullname, username, email, password, cf_password, yearofpassing}
 function validateEmail(email) {
     // eslint-disable-next-line
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
+    // return re.test(email);
+
+    if(re.test(email)){
+        // Email valid. Procees to test if it's from the right domain (Second argument is to check that the string ENDS with this domain, and that it doesn't just contain it)
+        if(email.indexOf("@aiktc.ac.in", email.length - "@aiktc.ac.in".length) !== -1){
+            // VALID
+            // console.log("VALID");
+            return true;
+        }
+        else {
+            // console.log("INVALID")
+            return false;
+        }
+    }
+}
+
+function validatePassword(password) {
+    const re = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,32}$");
+    return re.test(password);
 }
   
 export default valid
